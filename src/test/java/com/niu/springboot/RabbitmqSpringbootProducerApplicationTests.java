@@ -32,6 +32,7 @@ public class RabbitmqSpringbootProducerApplicationTests {
         properties.put("send_time", simpleDateFormat.format(new Date()));
 
         rabbitSender.send("Hello RabbitMQ For Spring Boot", properties);
+        rabbitSender.send("Hello RabbitMQ For Spring Boot", properties);
 
         Thread.sleep(2000);
     }

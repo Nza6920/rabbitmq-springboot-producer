@@ -57,7 +57,7 @@ public class RabbitSender {
         CorrelationData cd = new CorrelationData();
         // id 全局唯一
         cd.setId("123");
-//        rabbitTemplate.convertAndSend("exchange-1", "springboot.hello", msg, cd);
-        rabbitTemplate.convertAndSend("exchange-1", "spring.hello", msg, cd);
+        rabbitTemplate.convertAndSend("exchange-1", "springboot.hello", msg, cd);
+//        rabbitTemplate.convertAndSend("exchange-1", "spring.hello", msg, cd);
     }
 }
