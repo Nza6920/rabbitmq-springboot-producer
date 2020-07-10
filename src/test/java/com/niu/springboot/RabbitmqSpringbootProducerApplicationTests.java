@@ -1,5 +1,6 @@
 package com.niu.springboot;
 
+import com.niu.springboot.entity.Order;
 import com.niu.springboot.producer.RabbitSender;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,5 +36,15 @@ public class RabbitmqSpringbootProducerApplicationTests {
         rabbitSender.send("Hello RabbitMQ For Spring Boot", properties);
 
         Thread.sleep(2000);
+    }
+
+    @Test
+    public void testSender2() throws InterruptedException {
+
+        Order order = new Order("1", "nza");
+
+        rabbitSender.sendOrder(order);
+
+        Thread.sleep(3000);
     }
 }

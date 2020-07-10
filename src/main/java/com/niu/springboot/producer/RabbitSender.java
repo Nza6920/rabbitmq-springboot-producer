@@ -1,5 +1,6 @@
 package com.niu.springboot.producer;
 
+import com.niu.springboot.entity.Order;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.support.CorrelationData;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,5 +60,14 @@ public class RabbitSender {
         cd.setId("123");
         rabbitTemplate.convertAndSend("exchange-1", "springboot.hello", msg, cd);
 //        rabbitTemplate.convertAndSend("exchange-1", "spring.hello", msg, cd);
+    }
+
+    public void sendOrder(Order order) {
+        rabbitTemplate.setConfirmCallback(confirmCallback);
+        rabbitTemplate.setReturnCallback(returnCallback);
+        CorrelationData cd = new CorrelationData();
+        // id 全局唯一
+        cd.setId("9701");
+        rabbitTemplate.convertAndSend("exchange-2", "springboot.test2", order, cd);
     }
 }
